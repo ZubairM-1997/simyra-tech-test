@@ -6,4 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 const app_1 = __importDefault(require("./app"));
 exports.app = new app_1.default();
-exports.app.listen(4000);
+exports.app.initialize();
+exports.app.express.listen(4000, () => {
+    console.log(`App listening on port ${4000}`);
+});

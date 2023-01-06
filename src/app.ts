@@ -27,25 +27,16 @@ class App {
 
   private initialiseMiddleWare(): void {
     this.express.use(helmet());
-    // this.express.use(cors());
     this.express.use(morgan("dev"));
 
     this.express.use(compression());
     this.server.applyMiddleware({app: this.express, path: "/graphql", cors: true})
   }
 
-  private initialiseErrorHandling(): void {
-    this.express.use(errorMiddleware);
-  }
-
-  public async listen(port: number): Promise<void> {
+  public async initialize(): Promise<void> {
     await this.server.start()
-
     this.initialiseMiddleWare();
 
-    this.express.listen(port, () => {
-      console.log(`App listening on port ${port}`);
-    });
   }
 }
 
