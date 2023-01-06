@@ -19,7 +19,6 @@ let app;
 beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
     jest.setTimeout(30000);
     app = new app_1.default();
-    app.server.start();
     app.listen(4000);
 }));
 describe(('getStage query'), () => {

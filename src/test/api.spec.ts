@@ -9,7 +9,7 @@ beforeAll( async () => {
     jest.setTimeout(30000)
 
     app = new App()
-    app.listen(4000)
+    app.listen(5000)
 })
 
 describe(('getStage query'),  () => {
@@ -31,6 +31,7 @@ describe(('getStage query'),  () => {
 
         expect(data.getStage).toHaveLength(1)
     })
+
 })
 
 
