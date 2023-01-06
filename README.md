@@ -69,3 +69,10 @@ mutation{
 }}
 
 ```
+
+### Database Design
+For this solution, it would be a relatively simple database, ideally modelling this relationship between a Stage and a Task using a SQL Database, mySQL and PostgreSQL are popular choices
+
+![database](db_design.png)
+
+So this would be a One-To-Many relationship, as a Stage can have many Tasks, the relationship between them is represented by a foreign key on the Task table, which represents which Stage that Task belongs to
