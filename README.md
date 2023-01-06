@@ -45,7 +45,7 @@ query{
 
 ```
 mutation{
-    completetage(stageName: "string"){
+    completeStage(stageName: "string"){
         name 
         tasks {
             taskName
