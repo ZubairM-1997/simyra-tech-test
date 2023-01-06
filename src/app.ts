@@ -12,7 +12,7 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-co
 
 class App {
   public express: Application
-  private server: ApolloServer;
+  public server: ApolloServer;
 
 
    constructor () {

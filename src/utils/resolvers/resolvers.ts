@@ -22,7 +22,7 @@ export const resolvers = {
                     completedTasks: foundStage.completedTasks
                 }
 
-                return resp
+                return [resp]
             }
 
             return null;
@@ -42,7 +42,7 @@ export const resolvers = {
                     taskName: task.taskName,
                     completed: task.completed
                 }
-                return resp
+                return [resp]
             } else {
                 return null
             }
@@ -69,7 +69,7 @@ export const resolvers = {
                     taskName: task.taskName,
                     completed: task.completed
                 }
-                return resp
+                return [resp]
 
             } else {
                 return null
@@ -96,7 +96,7 @@ export const resolvers = {
                     completedTasks: foundStage.completedTasks
                 }
 
-                return resp
+                return [resp]
 
 
             } else {

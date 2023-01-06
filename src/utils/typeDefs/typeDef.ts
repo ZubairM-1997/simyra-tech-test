@@ -14,12 +14,12 @@ export const typeDefs = gql`
     }
 
     type Query {
-        getStage(stageName: String): Stage
-        getTask(taskName: String): Task
+        getStage(stageName: String): [Stage]
+        getTask(taskName: String): [Task]
     }
 
     type Mutation {
-        completeTask(stageName: String, taskName: String): Task
-        completeStage(stageName: String): Stage
+        completeTask(stageName: String, taskName: String): [Task]
+        completeStage(stageName: String): [Stage]
     }
 `
