@@ -4,7 +4,7 @@ To start the docker container which runs the main application code, enter the co
 
 To run the on localhost:4000, enter the command `docker run -p 4000:4000 simyra-tech-test`
 
-To see all the tests that are passing, exit the docker container and enter the command `npm install` in the terminal to install the dependancies then enter `npm test` to see all the tests passing
+To see all the tests that are passing, exit the docker container and enter the command `npm install` in the terminal to install the dependancies then enter `npm run test` to see all the tests passing
 
 To view the interface, you can either go to the browser and visit localhost:4000/graphql or use postman if you want to test it out using that
 

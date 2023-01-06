@@ -21,7 +21,7 @@ beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
     app = new app_1.default();
     app.initialize();
 }));
-describe(('getStage query'), () => {
+describe(('startup progress api'), () => {
     test("should get the correct Stage", () => __awaiter(void 0, void 0, void 0, function* () {
         const server = app.express;
         const { response } = yield (0, supertest_graphql_1.default)(server)

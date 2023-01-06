@@ -13,7 +13,7 @@ beforeAll( async () => {
     app.initialize();
 })
 
-describe(('getStage query'),  () => {
+describe(('startup progress api'),  () => {
     test("should get the correct Stage", async () => {
         const server = app.express
         const { response } : any = await request(server)
