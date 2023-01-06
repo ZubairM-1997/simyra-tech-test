@@ -14,7 +14,7 @@ To view the interface, you can either go to the browser and visit localhost:4000
 Since this project has a GraphQL interface, theres 2 queries and 2 mutations, below are the possible values you can return from the schema
 
 1) getStage(stageName: string)
-`
+```
 query{
     getStage(stageName: "string"){
         name 
@@ -26,11 +26,11 @@ query{
         completedTasks
 }}
 
-`
+```
 
 2) getTask(taskName: string)
 
-`
+```
 query{
     getTask(taskName: "string"){
         tasks {
@@ -39,11 +39,11 @@ query{
         }
 }}
 
-`
+```
 
 3) completeStage(stageName: "string")
 
-`
+```
 mutation{
     completetage(stageName: "string"){
         name 
@@ -55,11 +55,11 @@ mutation{
         completedTasks
 }}
 
-`
+```
 
 4) completeTask(taskName: string)
 
-`
+```
 mutation{
     completeTask(taskName: "string"){
         tasks {
@@ -68,4 +68,4 @@ mutation{
         }
 }}
 
-`
+```
