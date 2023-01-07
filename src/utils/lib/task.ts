@@ -7,7 +7,7 @@ export default class Task {
         this.completed = false;
     }
 
-    public isCompleted(){
+    public isCompleted() : boolean {
         return this.completed
     }
 
