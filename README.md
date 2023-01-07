@@ -33,11 +33,10 @@ query{
 ```
 query{
     getTask(taskName: "string"){
-        tasks {
-            taskName
-            completed
-        }
-}}
+        taskName
+        completed
+    }
+}
 
 ```
 
@@ -62,11 +61,10 @@ mutation{
 ```
 mutation{
     completeTask(taskName: "string"){
-        tasks {
-            taskName
-            completed
-        }
-}}
+        taskName
+        completed
+    }
+}
 
 ```
 
