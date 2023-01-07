@@ -3,6 +3,7 @@ import Task from '../lib/task';
 import Stage from "../lib/stage"
 import { TaskType } from '../types/TaskType';
 import { StageType } from '../types/StageType';
+import { timingSafeEqual } from "crypto";
 
 export const resolvers = {
     Query: {
@@ -46,6 +47,21 @@ export const resolvers = {
             } else {
                 return null
             }
+        },
+        getAllStages: (parent: any, args: any) => {
+            return stages.map((stage) => {
+                let tasks = stage.tasks.map((task) => ({
+                    taskName: task.taskName,
+                    completed: task.completed
+                }))
+
+                return {
+                    name: stage.name,
+                    tasks,
+                    completed: stage.completed,
+                    completedTasks: stage.completedTasks
+                }
+            })
         }
     },
 

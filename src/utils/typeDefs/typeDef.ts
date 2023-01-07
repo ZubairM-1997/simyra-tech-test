@@ -16,6 +16,7 @@ export const typeDefs = gql`
     type Query {
         getStage(stageName: String): [Stage]
         getTask(taskName: String): [Task]
+        getAllStages: [Stage]
     }
 
     type Mutation {

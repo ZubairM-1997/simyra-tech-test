@@ -14,6 +14,78 @@ beforeAll( async () => {
 })
 
 describe(('startup progress api'),  () => {
+    test("should get all stages", async () => {
+        const server = app.express
+        const { response } : any = await request(server)
+        .query(gql`
+        query{
+            getAllStages{
+                name 
+                tasks {
+                    taskName 
+                    completed
+                }
+                completed
+        }}
+        `)
+        .expectNoErrors()
+
+        expect(response.status)
+        expect(response.status).toEqual(200);
+        expect(response._body.data.getAllStages).toMatchObject([
+            {
+                "name": "Foundation",
+                "tasks": [
+                    {
+                        "taskName": "Set up virtual office",
+                        "completed": false
+                    },
+                    {
+                        "taskName": "Set mission and vision",
+                        "completed": false
+                    },
+                    {
+                        "taskName": "Select business name",
+                        "completed": false
+                    },
+                    {
+                        "taskName": "Buy domains",
+                        "completed": false
+                    }
+                ],
+                "completed": false
+            },
+            {
+                "name": "Discovery",
+                "tasks": [
+                    {
+                        "taskName": "Create roadmap",
+                        "completed": false
+                    },
+                    {
+                        "taskName": "Competitor analysis",
+                        "completed": false
+                    }
+                ],
+                "completed": false
+            },
+            {
+                "name": "Delivery",
+                "tasks": [
+                    {
+                        "taskName": "Release marketing website",
+                        "completed": false
+                    },
+                    {
+                        "taskName": "Release MVP",
+                        "completed": false
+                    }
+                ],
+                "completed": false
+            }
+        ])
+    })
+
     test("should get the correct Stage", async () => {
         const server = app.express
         const { response } : any = await request(server)
