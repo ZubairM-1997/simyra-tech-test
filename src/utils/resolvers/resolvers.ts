@@ -65,7 +65,7 @@ export const resolvers = {
     },
 
     Mutation: {
-        completeTask: (parent: any, { stageName, taskName } : any) => {
+        completeTask: (parent: any, { taskName } : any) => {
             let task = {} as Task
             stages.forEach((stage: Stage) => {
                 const found = stage.tasks.find((task) => task.taskName === taskName)
