@@ -17,6 +17,7 @@ const compression_1 = __importDefault(require("compression"));
 const morgan_1 = __importDefault(require("morgan"));
 const helmet_1 = __importDefault(require("helmet"));
 const apollo_server_express_1 = require("apollo-server-express");
+const errorMiddleware_1 = __importDefault(require("./middleware/errorMiddleware"));
 const typeDef_1 = require("./utils/typeDefs/typeDef");
 const resolvers_1 = require("./utils/resolvers/resolvers");
 const apollo_server_core_1 = require("apollo-server-core");
@@ -28,12 +29,16 @@ class App {
             resolvers: resolvers_1.resolvers,
             plugins: [(0, apollo_server_core_1.ApolloServerPluginLandingPageGraphQLPlayground)()],
         });
+        this.initialiseErrorHandling();
     }
     initialiseMiddleWare() {
         this.express.use((0, helmet_1.default)());
         this.express.use((0, morgan_1.default)("dev"));
         this.express.use((0, compression_1.default)());
         this.server.applyMiddleware({ app: this.express, path: "/graphql", cors: true });
+    }
+    initialiseErrorHandling() {
+        this.express.use(errorMiddleware_1.default);
     }
     initialize() {
         return __awaiter(this, void 0, void 0, function* () {

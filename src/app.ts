@@ -23,6 +23,8 @@ class App {
         resolvers,
         plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     })
+
+    this.initialiseErrorHandling()
   }
 
   private initialiseMiddleWare(): void {
@@ -31,6 +33,10 @@ class App {
 
     this.express.use(compression());
     this.server.applyMiddleware({app: this.express, path: "/graphql", cors: true})
+  }
+
+  private initialiseErrorHandling(): void {
+    this.express.use(errorMiddleware);
   }
 
   public async initialize(): Promise<void> {
