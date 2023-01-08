@@ -37,7 +37,7 @@ export const resolvers = {
                 }
             })
 
-            if (task) {
+            if (task.completed !== undefined && task.taskName !== undefined) {
                 const resp : TaskType = {
                     taskName: task.taskName,
                     completed: task.completed
@@ -74,7 +74,7 @@ export const resolvers = {
                 }
             })
 
-            if (task) {
+            if (task.completed !== undefined && task.taskName !== undefined) {
                 
                 if (task.isCompleted() === false) {
                     task.markAsCompleted()

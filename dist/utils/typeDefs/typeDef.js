@@ -18,6 +18,7 @@ exports.typeDefs = (0, apollo_server_express_1.gql) `
     type Query {
         getStage(stageName: String): [Stage]
         getTask(taskName: String): [Task]
+        getAllStages: [Stage]
     }
 
     type Mutation {

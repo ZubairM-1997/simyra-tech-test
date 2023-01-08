@@ -29,7 +29,7 @@ exports.resolvers = {
                     task = found;
                 }
             });
-            if (task) {
+            if (task.completed !== undefined && task.taskName !== undefined) {
                 const resp = {
                     taskName: task.taskName,
                     completed: task.completed
@@ -39,10 +39,24 @@ exports.resolvers = {
             else {
                 return null;
             }
+        },
+        getAllStages: (parent, args) => {
+            return datastore_1.stages.map((stage) => {
+                let tasks = stage.tasks.map((task) => ({
+                    taskName: task.taskName,
+                    completed: task.completed
+                }));
+                return {
+                    name: stage.name,
+                    tasks,
+                    completed: stage.completed,
+                    completedTasks: stage.completedTasks
+                };
+            });
         }
     },
     Mutation: {
-        completeTask: (parent, { stageName, taskName }) => {
+        completeTask: (parent, { taskName }) => {
             let task = {};
             datastore_1.stages.forEach((stage) => {
                 const found = stage.tasks.find((task) => task.taskName === taskName);
@@ -50,7 +64,7 @@ exports.resolvers = {
                     task = found;
                 }
             });
-            if (task) {
+            if (task.completed !== undefined && task.taskName !== undefined) {
                 if (task.isCompleted() === false) {
                     task.markAsCompleted();
                 }
