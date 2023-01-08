@@ -5,7 +5,7 @@ const datastore_1 = require("../../datastore");
 exports.resolvers = {
     Query: {
         getStage: (parent, { stageName }) => {
-            const foundStage = datastore_1.stages.find((stage) => stage.name === stageName);
+            const foundStage = datastore_1.stages.find((stage) => stage.name.toLowerCase() === stageName.toLowerCase());
             if (foundStage) {
                 const tasks = foundStage.tasks.map((task) => ({
                     taskName: task.taskName,
@@ -24,7 +24,7 @@ exports.resolvers = {
         getTask: (parent, { taskName }) => {
             let task = {};
             datastore_1.stages.forEach((stage) => {
-                const found = stage.tasks.find((task) => task.taskName === taskName);
+                const found = stage.tasks.find((task) => task.taskName.toLowerCase() === taskName.toLowerCase());
                 if (found) {
                     task = found;
                 }
@@ -60,7 +60,7 @@ exports.resolvers = {
         completeTask: (parent, { taskName }) => {
             let task = {};
             datastore_1.stages.forEach((stage) => {
-                const found = stage.tasks.find((task) => task.taskName === taskName);
+                const found = stage.tasks.find((task) => task.taskName.toLowerCase() === taskName.toLowerCase());
                 if (found) {
                     task = found;
                 }
@@ -80,7 +80,7 @@ exports.resolvers = {
             }
         },
         completeStage: (parent, { stageName }) => {
-            const foundStage = datastore_1.stages.find((stage) => stage.name === stageName);
+            const foundStage = datastore_1.stages.find((stage) => stage.name.toLowerCase() === stageName.toLowerCase());
             if (foundStage) {
                 if (foundStage.isStageComplete() === false) {
                     foundStage.completeStage();

@@ -7,7 +7,8 @@ import { StageType } from '../types/StageType';
 export const resolvers = {
     Query: {
         getStage: (parent : any, { stageName } : any) => {
-            const foundStage = stages.find((stage) => stage.name === stageName)
+
+            const foundStage = stages.find((stage) => stage.name.toLowerCase() === stageName.toLowerCase())
             if(foundStage){
                 const tasks : TaskType[] = foundStage.tasks.map((task) => 
                 ({
@@ -31,7 +32,7 @@ export const resolvers = {
         getTask: (parent : any , { taskName } : any ) => {
             let task = {} as Task
             stages.forEach((stage: Stage) => {
-                const found = stage.tasks.find((task) => task.taskName === taskName)
+                const found = stage.tasks.find((task) => task.taskName.toLowerCase() === taskName.toLowerCase())
                 if (found) {
                     task = found
                 }
@@ -70,7 +71,7 @@ export const resolvers = {
         completeTask: (parent: any, { taskName } : any) => {
             let task = {} as Task
             stages.forEach((stage: Stage) => {
-                const found = stage.tasks.find((task) => task.taskName === taskName)
+                const found = stage.tasks.find((task) => task.taskName.toLowerCase() === taskName.toLowerCase())
                 if (found) {
                     task = found
                 }
@@ -94,7 +95,7 @@ export const resolvers = {
         }, 
 
         completeStage: (parent: any, { stageName } : any) => {
-            const foundStage = stages.find((stage) => stage.name === stageName)
+            const foundStage = stages.find((stage) => stage.name.toLowerCase() === stageName.toLowerCase())
             if(foundStage){
                 if (foundStage.isStageComplete() === false ) {
                     foundStage.completeStage()
