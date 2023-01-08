@@ -41,7 +41,7 @@ exports.resolvers = {
             }
         },
         getAllStages: (parent, args) => {
-            return datastore_1.stages.map((stage) => {
+            const stages = stages.map((stage) => {
                 let tasks = stage.tasks.map((task) => ({
                     taskName: task.taskName,
                     completed: task.completed
@@ -53,6 +53,7 @@ exports.resolvers = {
                     completedTasks: stage.completedTasks
                 };
             });
+            return stages;
         }
     },
     Mutation: {
