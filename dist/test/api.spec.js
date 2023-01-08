@@ -109,21 +109,21 @@ describe(('startup progress api'), () => {
         `)
             .expectNoErrors();
         expect(response.status).toEqual(200);
-        expect(response._body.data.getStage).toMatchObject([{
-                "name": "Delivery",
-                "tasks": [
-                    {
-                        "taskName": "Release marketing website",
-                        "completed": false
-                    },
-                    {
-                        "taskName": "Release MVP",
-                        "completed": false
-                    }
-                ],
-                "completed": false,
-                "completedTasks": 0
-            }]);
+        expect(response._body.data.getStage).toMatchObject({
+            "name": "Delivery",
+            "tasks": [
+                {
+                    "taskName": "Release marketing website",
+                    "completed": false
+                },
+                {
+                    "taskName": "Release MVP",
+                    "completed": false
+                }
+            ],
+            "completed": false,
+            "completedTasks": 0
+        });
     }));
     test("should get the correct Task", () => __awaiter(void 0, void 0, void 0, function* () {
         const server = app.express;
@@ -138,12 +138,10 @@ describe(('startup progress api'), () => {
         `)
             .expectNoErrors();
         expect(response.status).toEqual(200);
-        expect(response._body.data.getTask).toMatchObject([
-            {
-                "taskName": "Release marketing website",
-                "completed": false
-            }
-        ]);
+        expect(response._body.data.getTask).toMatchObject({
+            "taskName": "Release marketing website",
+            "completed": false
+        });
     }));
     test("should make task complete", () => __awaiter(void 0, void 0, void 0, function* () {
         const server = app.express;
@@ -158,12 +156,10 @@ describe(('startup progress api'), () => {
         `)
             .expectNoErrors();
         expect(response.status).toEqual(200);
-        expect(response._body.data.completeTask).toMatchObject([
-            {
-                "taskName": "Release marketing website",
-                "completed": true
-            }
-        ]);
+        expect(response._body.data.completeTask).toMatchObject({
+            "taskName": "Release marketing website",
+            "completed": true
+        });
     }));
     test("should make stage complete once every task is complete", () => __awaiter(void 0, void 0, void 0, function* () {
         const server = app.express;
@@ -200,7 +196,7 @@ describe(('startup progress api'), () => {
                 completedTasks
         }}
         `);
-        expect(response._body.data.completeStage[0].completed).toBe(true);
-        expect(response._body.data.completeStage[0].completedTasks).toBe(2);
+        expect(response._body.data.completeStage.completed).toBe(true);
+        expect(response._body.data.completeStage.completedTasks).toBe(2);
     }));
 });

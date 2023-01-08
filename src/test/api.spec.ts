@@ -104,7 +104,7 @@ describe(('startup progress api'),  () => {
         .expectNoErrors()
 
         expect(response.status).toEqual(200);
-        expect(response._body.data.getStage).toMatchObject( [{
+        expect(response._body.data.getStage).toMatchObject( {
             "name": "Delivery",
             "tasks": [
                 {
@@ -118,7 +118,7 @@ describe(('startup progress api'),  () => {
             ],
             "completed": false,
             "completedTasks": 0
-        }])
+        })
     })
 
     test("should get the correct Task", async () => {
@@ -135,12 +135,12 @@ describe(('startup progress api'),  () => {
         .expectNoErrors()
 
         expect(response.status).toEqual(200)
-        expect(response._body.data.getTask).toMatchObject([
+        expect(response._body.data.getTask).toMatchObject(
             {
                 "taskName": "Release marketing website",
                 "completed": false
             }
-        ])
+        )
     })
 
 
@@ -158,12 +158,12 @@ describe(('startup progress api'),  () => {
         .expectNoErrors()
 
         expect(response.status).toEqual(200)
-        expect(response._body.data.completeTask).toMatchObject([
+        expect(response._body.data.completeTask).toMatchObject(
             {
                 "taskName": "Release marketing website",
                 "completed": true
             }
-        ])
+        )
     })
 
     test("should make stage complete once every task is complete", async () => {
@@ -204,8 +204,8 @@ describe(('startup progress api'),  () => {
         }}
         `)
 
-        expect(response._body.data.completeStage[0].completed).toBe(true)
-        expect(response._body.data.completeStage[0].completedTasks).toBe(2)
+        expect(response._body.data.completeStage.completed).toBe(true)
+        expect(response._body.data.completeStage.completedTasks).toBe(2)
 
 
 

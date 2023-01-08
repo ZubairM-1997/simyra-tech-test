@@ -17,7 +17,7 @@ exports.resolvers = {
                     completed: foundStage.completed,
                     completedTasks: foundStage.completedTasks
                 };
-                return [resp];
+                return resp;
             }
             return null;
         },
@@ -34,7 +34,7 @@ exports.resolvers = {
                     taskName: task.taskName,
                     completed: task.completed
                 };
-                return [resp];
+                return resp;
             }
             else {
                 return null;
@@ -73,7 +73,7 @@ exports.resolvers = {
                     taskName: task.taskName,
                     completed: task.completed
                 };
-                return [resp];
+                return resp;
             }
             else {
                 return null;
@@ -95,7 +95,7 @@ exports.resolvers = {
                     tasks,
                     completedTasks: foundStage.completedTasks
                 };
-                return [resp];
+                return resp;
             }
             else {
                 return null;
