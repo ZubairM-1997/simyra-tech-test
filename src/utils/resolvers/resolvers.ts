@@ -48,7 +48,7 @@ export const resolvers = {
             }
         },
         getAllStages: (parent: any, args: any) => {
-            const stages : StageType[] =  stages.map((stage) => {
+            const stageList : StageType[] =  stages.map((stage) => {
                 let tasks = stage.tasks.map((task) => ({
                     taskName: task.taskName,
                     completed: task.completed
@@ -62,7 +62,7 @@ export const resolvers = {
                 }
             }) 
 
-            return stages
+            return stageList
         }
     },
 
